@@ -5,37 +5,41 @@ For GUN check also https://github.com/amark/gun/wiki and https://gitter.im/amark
 ![image](https://user-images.githubusercontent.com/67427045/214804241-d1b2b365-fa5d-4b35-9a31-e3301acf466f.png)
 
 # Starterkit Contents
+
 ## Gun, Relay, Form, Relay Donation, Digital Globe (location-based services)
-### amark / gun
+### amark / gun https://github.com/amark/gun
 An open source cybersecurity protocol for syncing decentralized graph data.
 
-### worldpeaceenginelabs / ELECTRON-GUN
+### worldpeaceenginelabs / ELECTRON-GUN https://github.com/worldpeaceenginelabs/ELECTRON-GUN
 A Gun Relay Server executable for Desktop (Windows,-Linux,-MAC)
 
-### worldpeaceenginelabs / FORM-GUN
+### worldpeaceenginelabs / FORM-GUN https://github.com/worldpeaceenginelabs/FORM-GUN
 A decentralized form handler with Gun for "static" JAMStack websites on a CDN. Plus "Svelte Compiler Tutorial with Gun"
 
-### worldpeaceenginelabs / DONATE-DECENTRALIZE-UI
+### worldpeaceenginelabs / DONATE-DECENTRALIZE-UI https://github.com/worldpeaceenginelabs/DONATE-DECENTRALIZE-UI
 A little taskbar which empowers your fanbase to deploy a Gun relay on multiple ways to support your decentralized website/app.
  
-### worldpeaceenginelabs / CESIUM-GUN
+### worldpeaceenginelabs / CESIUM-GUN https://github.com/worldpeaceenginelabs/CESIUM-GUN
 This is a POC of a decentralized, open-source Google Earth made with Gun and Cesium.
- 
+
+<br>
+
 ## Authentication, encryption/hash, security
-### worldpeaceenginelabs / DAuth
+
+### worldpeaceenginelabs / DAuth https://github.com/worldpeaceenginelabs/DAuth
 A decentralized OAuth / Metamask Login | Without server, files or API... Just 1kb of logic!
 
-### antelle / argon2-browser
+### antelle / argon2-browser https://github.com/antelle/argon2-browser
 Argon2 library compiled for browser runtime
 
-### emn178 / js-sha3
+### emn178 / js-sha3 https://github.com/emn178/js-sha3
 A simple SHA-3 / Keccak hash function for JavaScript supports UTF-8 encoding.
 
-### brix / crypto-js
+### brix / crypto-js https://github.com/brix/crypto-js
 JavaScript library of crypto standards.
 
-### ai / nanoid
+### ai / nanoid https://github.com/ai/nanoid
 A tiny (130 bytes), secure, URL-friendly, unique string ID generator for JavaScript
  
-### mozilla / node-srp
+### mozilla / node-srp https://github.com/mozilla/node-srp
 Secure Remote Password (SRP)
