@@ -28,7 +28,7 @@ This is a POC of a decentralized, open-source Google Earth made with Gun and Ces
 ## Storage logic
 
 ### worldpeaceenginelabs / 1-MEGABYTE-STORE https://github.com/worldpeaceenginelabs/1-MEGABYTE-STORE
-A storage logic to distribute your whole user-database, but with only 1 Megabyte on each user's device. Works with 1, 100, 3333, and 8 Billion users. Stays always 1 MB!!!<br>
+A storage logic to distribute your whole user-database, but with only 1 Megabyte on each user's device. Works with 1, 100, 3333, and 8 Billion users but stays always 1 MB!!! Infinity Store stores 3333 files, no matter which size, in 1 MB.<br>
 <br>
 
 ## Authentication, encryption/hash, security
