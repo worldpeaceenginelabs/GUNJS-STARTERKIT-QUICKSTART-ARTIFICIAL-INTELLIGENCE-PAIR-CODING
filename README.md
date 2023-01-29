@@ -3,8 +3,10 @@ A collection of tools you need to run a local-first, decentralized graph databas
 For GUN check also https://github.com/amark/gun/wiki and https://gitter.im/amark/gun
 
 ![image](https://user-images.githubusercontent.com/67427045/214804241-d1b2b365-fa5d-4b35-9a31-e3301acf466f.png)
+<br><br>
 
 # Starterkit Contents
+<br>
 
 ## Gun, Relay, Form, Relay Donation, Digital Globe (location-based services)
 ### amark / gun https://github.com/amark/gun
@@ -20,8 +22,13 @@ A decentralized form handler with Gun for "static" JAMStack websites on a CDN. P
 A little taskbar which empowers your fanbase to deploy a Gun relay on multiple ways to support your decentralized website/app.
  
 ### worldpeaceenginelabs / CESIUM-GUN https://github.com/worldpeaceenginelabs/CESIUM-GUN
-This is a POC of a decentralized, open-source Google Earth made with Gun and Cesium.
+This is a POC of a decentralized, open-source Google Earth made with Gun and Cesium.<br>
+<br>
 
+## Storage logic
+
+### worldpeaceenginelabs / PUBLIC-KEY-PAIR-VAULT https://github.com/worldpeaceenginelabs/PUBLIC-KEY-PAIR-VAULT
+A storage logic for decentralized networks. Only 1 Megabyte on each users device. Works with 1, 100, 3333, and 8 Billion users. Always 1 MB!!!<br>
 <br>
 
 ## Authentication, encryption/hash, security
