@@ -27,8 +27,8 @@ This is a POC of a decentralized, open-source Google Earth made with Gun and Ces
 
 ## Storage logic
 
-### worldpeaceenginelabs / PUBLIC-KEY-PAIR-VAULT https://github.com/worldpeaceenginelabs/PUBLIC-KEY-PAIR-VAULT
-A storage logic for decentralized networks. Only 1 Megabyte on each users device. Works with 1, 100, 3333, and 8 Billion users. Always 1 MB!!!<br>
+### worldpeaceenginelabs / 1-MEGABYTE-STORE https://github.com/worldpeaceenginelabs/1-MEGABYTE-STORE
+A storage logic to distribute your whole user-database, but with only 1 Megabyte on each user's device. Works with 1, 100, 3333, and 8 Billion users. Stays always 1 MB!!!<br>
 <br>
 
 ## Authentication, encryption/hash, security
