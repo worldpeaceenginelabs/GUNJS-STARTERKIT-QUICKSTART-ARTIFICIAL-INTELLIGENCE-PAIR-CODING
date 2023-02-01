@@ -65,12 +65,6 @@ Desktop App (Win, Mac, Linux) https://github.com/lencx/ChatGPT (installables und
 ### https://github.com/antelle/argon2-browser
 #### Argon2 library compiled for browser runtime
 
-### https://github.com/emn178/js-sha3
-#### A simple SHA-3 / Keccak hash function for JavaScript supports UTF-8 encoding.
-
-### https://github.com/brix/crypto-js
-#### JavaScript library of crypto standards.
-
 ### https://github.com/ai/nanoid
 #### A tiny (130 bytes), secure, URL-friendly, unique string ID generator for JavaScript
  
@@ -121,7 +115,19 @@ Desktop App (Win, Mac, Linux) https://github.com/lencx/ChatGPT (installables und
 <br>
 
 ![image](https://user-images.githubusercontent.com/67427045/216159085-d90bd35e-8b6b-421d-8e7e-5a3f4a1ae365.png)<br>
-<br>
+<br><br>
 
 # SEA - Security, Encryption, & Authorization
-https://gun.eco/docs/SEA
+### https://gun.eco/docs/SEA
+<br>
+
+## Sign-up, login, authentication, session management, and log-out
+### When a user signs up, the signup function creates a new user account with the given username and password. When a user logs in, the login function authenticates the user with the given username and password. When a user is authenticated, they are able to access their session data through the user object. The logout function logs the user out of their session.
+<br>
+
+![image](https://user-images.githubusercontent.com/67427045/216167021-18b9e79b-8b47-4e41-8d79-7060c0dd2fed.png)
+<br><br>
+
+## Store data encrypted to User Space
+### This code encrypts the text 'secret text' with the user's public key using the Gun.SEA.encrypt method. The encrypted text is then stored in the user's private space using the gun.user().get('encryptedText').put(encryptedText) method. NOTE: We need an authenticated (logged-in) user for this code to work.
+![image](https://user-images.githubusercontent.com/67427045/216165080-53222ac5-ee5a-49a1-9704-e506366a1b25.png)
