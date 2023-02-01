@@ -1,4 +1,4 @@
-# GUNJS-Starterkit
+# GUNJS-Starterkit+Quickstart
 #### A collection of tools you need to run a local-first, decentralized graph database.<br>
 For GunJS Wiki check also https://github.com/amark/gun/wiki<br>
 <br>
@@ -11,7 +11,7 @@ For GunJS Wiki check also https://github.com/amark/gun/wiki<br>
 # Starterkit Contents
 <br>
 
-## Gun, Relay, Form, Relay Donation, Digital Globe (location-based services)
+## Gun, Desktop-Relay, Form, Relay Donation, Digital Globe (location-based services)
 ### amark / gun https://github.com/amark/gun
 An open source cybersecurity protocol for syncing decentralized graph data.
 
@@ -29,6 +29,12 @@ This is a POC of a decentralized, open-source Google Earth made with Gun and Ces
 <br>
 
 ## Storage logic
+
+### GunJS - Included and third-party storage solutions https://github.com/amark/gun/wiki/Storage
+To permanently store all GUN's data, your GUN server app must define which storage engine to use. By default a GUN server will store the data in a file, but this is just meant to be used during development. It is not a sound solution for production.<br>
+<br>
+However, GUN is different to most other databases when it comes to dev vs prod setup in that the only distinction is that a production setup can maybe include a persistent storage option (e.g. AWS S3, IPFS...) for a participating relay peer. That's not mandatory though, browsers peers with their localStorage storage are sufficient more often than not, doesn't matter if you're still in development or already running your app in production with customers.<br>
+<br>
 
 ### worldpeaceenginelabs / 1-MEGABYTE-INFINITY-STORE https://github.com/worldpeaceenginelabs/1-MEGABYTE-STORE
 A storage logic to distribute your whole user-database, but with only 1 Megabyte on each user's device. Works with 1, 100, 3333, and 8 Billion users but stays always 1 MB!!!<br>
@@ -52,4 +58,24 @@ JavaScript library of crypto standards.
 A tiny (130 bytes), secure, URL-friendly, unique string ID generator for JavaScript
  
 ### mozilla / node-srp https://github.com/mozilla/node-srp
-Secure Remote Password (SRP)
+Secure Remote Password (SRP)<br>
+<br>
+
+# QUICKSTART for components, apps, webapps, dapps... (the decentralized back-end)
+<br>
+
+## GUN Relays (Gun works local first even without a relay, but for syncing between clients you need a relay)
+### [Gun Relay (How to run a node - Deploy a GUN relay server everywhere on GUN WIKI)](https://github.com/amark/gun/wiki#how-to-run-a-node---deploy-a-gun-relay-server-everywhere)
+### [Gun Relay Desktop (Electron Gun)](https://github.com/worldpeaceenginelabs/ELECTRON-GUN)
+### [Gun Relay Donation Tool (Donate Decentralize UI)](https://github.com/worldpeaceenginelabs/DONATE-DECENTRALIZE-UI)<br>
+<br>
+
+## .get() | .put | .on - There are [more methods...](https://gun.eco/docs/API) but these three are the basic ones.
+### This is pretty much the core of everything. Notice how easy it is to connect your front-end code with the graph database GUN.
+### Notice that no matter how complex your function is: You just drop the result in a variable and connect it to the GUN write function (green boxes, green lines).
+### Last, you can easily receive the data in any function, again, no matter how complex, by ```db.on(data => {//your function here});``` and get the data that you wrote to GUN before (red boxes, red lines)<br>
+<br>
+
+![image](https://user-images.githubusercontent.com/67427045/212865152-88544d46-f46b-4cd5-9d2e-4f2571dfb80b.png)
+![image](https://user-images.githubusercontent.com/67427045/216111036-ee93b490-3506-42cf-a454-e416962b86d3.png)
+### This script saves a long/lat pair to the GUN graph, and renders a point on the globe, if the local clients graph (browser local storage) or a connected graph (GUN-Relay) gets a new entry. (the ```.on(graphname)``` subscribes to the GUN graph. Everything's new to the graph will automatically be rendered on the globe) Both local storage graph and/or relay graph changes!
