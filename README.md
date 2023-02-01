@@ -99,5 +99,29 @@ Desktop App (Win, Mac, Linux) https://github.com/lencx/ChatGPT (installables und
 ### The ```.on(graphname)``` subscribes to the GUN graph. Everything's new to the graph will automatically be rendered on the globe. Both local storage graph and/or relay graph changes!
 <br>
 
+# Spaces
+
+##### GUN supports more than just key/value pairs, it is a graph database that can store SQL-like tables, JSON-like documents, files and livestreaming video, plus relational and hypergraph data!
+##### Beware! Anyone can edit the data by default - to fix this, we have to use the User system. GUN is a universal graph which has 3 logical "spaces" protected by SEA:
+<br>
+
+## Public Space - ```.get(graphname).put(data)```
+### Anyone can add, change, or remove data from here. Think of it as a giant wiki.
+##### Note: Some data here may be encrypted such that the content stays secret, but it can always be overwritten. Imagine in real life someone hides a prize in a vault at the beach: Once it is found it may be damaged or moved, but only a person who knows the key can unlock it.
+<br>
+
+## User Space - ```user.get(graphname).put(data)```
+### This data can only be be changed, added or removed, by the owner. The data can be either private or publicly readable.
+##### Note: Data is cryptographically owned by the user, there is no "app admin" or "website owner", this may change how you build apps but it guarantees better safety. Owners can authorize or give other users permission to edit the owner's data. Again, the owner does this, not the app developer or database admin.
+<br>
+
+## Frozen Space
+### This data cannot be changed or removed, only added to. Nobody owns this data.
+##### Note: If nobody stores the data it may be forgotten, if the peers that store it are offline the data may not be found until they are online again. This is true of data in any space though.
+<br>
+
+![image](https://user-images.githubusercontent.com/67427045/216159085-d90bd35e-8b6b-421d-8e7e-5a3f4a1ae365.png)<br>
+<br>
+
 # SEA - Security, Encryption, & Authorization
 https://gun.eco/docs/SEA
