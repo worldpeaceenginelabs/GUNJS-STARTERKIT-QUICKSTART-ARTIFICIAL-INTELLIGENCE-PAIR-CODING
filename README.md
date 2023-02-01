@@ -129,5 +129,5 @@ Desktop App (Win, Mac, Linux) https://github.com/lencx/ChatGPT (installables und
 <br><br>
 
 ## Store data encrypted to User Space
-### This code encrypts the text 'secret text' with the user's public key using the Gun.SEA.encrypt method. The encrypted text is then stored in the user's private space using the gun.user().get('encryptedText').put(encryptedText) method. NOTE: We need an authenticated (logged-in) user for this code to work.
+### This code encrypts the text 'secret text' with the user's public key using the Gun.SEA.encrypt method. The encrypted text is then stored in the user's private space using the db.user().get('encryptedText').put(encryptedText) method. NOTE: We need an authenticated (logged-in) user for this code to work.
 ![image](https://user-images.githubusercontent.com/67427045/216165080-53222ac5-ee5a-49a1-9704-e506366a1b25.png)
