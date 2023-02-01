@@ -12,53 +12,56 @@ For GunJS Wiki check also https://github.com/amark/gun/wiki<br>
 <br>
 
 ## Gun, Desktop-Relay, Form, Relay Donation, Digital Globe (location-based services)
-### amark / gun https://github.com/amark/gun
-An open source cybersecurity protocol for syncing decentralized graph data.
+### https://github.com/amark/gun
+#### An open source cybersecurity protocol for syncing decentralized graph data.
 
-### worldpeaceenginelabs / ELECTRON-GUN https://github.com/worldpeaceenginelabs/ELECTRON-GUN
-A Gun Relay Server executable for Desktop (Windows,-Linux,-MAC)
+### https://github.com/worldpeaceenginelabs/ELECTRON-GUN
+#### A Gun Relay Server executable for Desktop (Windows,-Linux,-MAC)
 
-### worldpeaceenginelabs / FORM-GUN https://github.com/worldpeaceenginelabs/FORM-GUN
-A decentralized form handler with Gun for "static" JAMStack websites on a CDN. Plus "Svelte Compiler Tutorial with Gun"
+### https://github.com/worldpeaceenginelabs/FORM-GUN
+#### A decentralized form handler with Gun for "static" JAMStack websites on a CDN. Plus "Svelte Compiler Tutorial with Gun"
 
-### worldpeaceenginelabs / DONATE-DECENTRALIZE-UI https://github.com/worldpeaceenginelabs/DONATE-DECENTRALIZE-UI
-A little taskbar which empowers your fanbase to deploy a Gun relay on multiple ways to support your decentralized website/app.
+### https://github.com/worldpeaceenginelabs/DONATE-DECENTRALIZE-UI
+#### A little taskbar which empowers your fanbase to deploy a Gun relay on multiple ways to support your decentralized website/app.
  
-### worldpeaceenginelabs / CESIUM-GUN https://github.com/worldpeaceenginelabs/CESIUM-GUN
-This is a POC of a decentralized, open-source Google Earth made with Gun and Cesium.<br>
+### https://github.com/worldpeaceenginelabs/CESIUM-GUN
+#### This is a POC of a decentralized, open-source Google Earth made with Gun and Cesium.<br>
 <br>
 
 ## Storage logic
 
 ### GunJS - Included and third-party storage solutions https://github.com/amark/gun/wiki/Storage
-To permanently store all GUN's data, your GUN server app must define which storage engine to use. By default a GUN server will store the data in a file, but this is just meant to be used during development. It is not a sound solution for production.<br>
-<br>
-However, GUN is different to most other databases when it comes to dev vs prod setup in that the only distinction is that a production setup can maybe include a persistent storage option (e.g. AWS S3, IPFS...) for a participating relay peer. That's not mandatory though, browsers peers with their localStorage storage are sufficient more often than not, doesn't matter if you're still in development or already running your app in production with customers.<br>
+#### To permanently store all GUN's data, your GUN server app must define which storage engine to use. By default a GUN server will store the data in a file, but this is just meant to be used during development. It is not a sound solution for production.
+#### However, GUN is different to most other databases when it comes to dev vs prod setup in that the only distinction is that a production setup can maybe include a persistent storage option (e.g. AWS S3, IPFS...) for a participating relay peer. That's not mandatory though, browsers peers with their localStorage storage are sufficient more often than not, doesn't matter if you're still in development or already running your app in production with customers.<br>
 <br>
 
-### worldpeaceenginelabs / 1-MEGABYTE-INFINITY-STORE https://github.com/worldpeaceenginelabs/1-MEGABYTE-STORE
-A storage logic to distribute your whole user-database, but with only 1 Megabyte on each user's device. Works with 1, 100, 3333, and 8 Billion users but stays always 1 MB!!!<br>
+### https://github.com/worldpeaceenginelabs/1-MEGABYTE-STORE
+#### A storage logic to distribute your whole user-database, but with only 1 Megabyte on each user's device. Works with 1, 100, 3333, and 8 Billion users but stays always 1 MB!!!<br>
 <br>
+
+## Webcrypto API
+#### https://gist.github.com/pedrouid/b4056fd1f754918ddae86b32cf7d803e (Web Cryptography API Examples - A collection of well commented, well ordered snippets for 20 algorithms)
+#### https://diafygi.github.io/webcrypto-examples/ (This table is live! Every ✓ or ✗ on this page is a test to see if your browser supports that method in WebCryptoAPI.)
+#### God bless the internet, open-source and collaboration. Amen 🙏😂
 
 ## Authentication, encryption/hash, security
+### https://github.com/worldpeaceenginelabs/DAuth
+#### A decentralized OAuth / Metamask Login | Without server, files or API... Just 1kb of logic!
 
-### worldpeaceenginelabs / DAuth https://github.com/worldpeaceenginelabs/DAuth
-A decentralized OAuth / Metamask Login | Without server, files or API... Just 1kb of logic!
+### https://github.com/antelle/argon2-browser
+#### Argon2 library compiled for browser runtime
 
-### antelle / argon2-browser https://github.com/antelle/argon2-browser
-Argon2 library compiled for browser runtime
+### https://github.com/emn178/js-sha3
+#### A simple SHA-3 / Keccak hash function for JavaScript supports UTF-8 encoding.
 
-### emn178 / js-sha3 https://github.com/emn178/js-sha3
-A simple SHA-3 / Keccak hash function for JavaScript supports UTF-8 encoding.
+### https://github.com/brix/crypto-js
+#### JavaScript library of crypto standards.
 
-### brix / crypto-js https://github.com/brix/crypto-js
-JavaScript library of crypto standards.
-
-### ai / nanoid https://github.com/ai/nanoid
-A tiny (130 bytes), secure, URL-friendly, unique string ID generator for JavaScript
+### https://github.com/ai/nanoid
+#### A tiny (130 bytes), secure, URL-friendly, unique string ID generator for JavaScript
  
-### mozilla / node-srp https://github.com/mozilla/node-srp
-Secure Remote Password (SRP)<br>
+### https://github.com/mozilla/node-srp
+#### Secure Remote Password (SRP)<br>
 <br>
 
 # QUICKSTART for components, apps, webapps, dapps... (the decentralized back-end)
