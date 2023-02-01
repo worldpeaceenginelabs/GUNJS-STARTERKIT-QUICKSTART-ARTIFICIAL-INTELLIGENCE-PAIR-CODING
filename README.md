@@ -75,10 +75,10 @@ For GunJS Wiki check also https://github.com/amark/gun/wiki<br>
 
 ## .get() | .put | .on - There are [more methods...](https://gun.eco/docs/API) but these three are the basic ones.
 ### This is pretty much the core of everything. Notice how easy it is to connect your front-end code with the graph database GUN.
-### Notice that no matter how complex your function is: You just drop the result in a variable and connect it to the GUN write function (green boxes, green lines).
+### Notice that no matter how complex your function is: You just drop the result into one or multible variables and connect them to the GUN write function (green boxes, green lines).
 ### Last, you can easily receive the data in any function, again, no matter how complex, by ```db.on(data => {//your function here});``` and get the data that you wrote to GUN before (red boxes, red lines)<br>
 <br>
 
 ![image](https://user-images.githubusercontent.com/67427045/212865152-88544d46-f46b-4cd5-9d2e-4f2571dfb80b.png)
 ![image](https://user-images.githubusercontent.com/67427045/216111036-ee93b490-3506-42cf-a454-e416962b86d3.png)
-### This script saves a long/lat pair to the GUN graph, and renders a point on the globe, if the local clients graph (browser local storage) or a connected graph (GUN-Relay) gets a new entry. (the ```.on(graphname)``` subscribes to the GUN graph. Everything's new to the graph will automatically be rendered on the globe) Both local storage graph and/or relay graph changes!
+### This script saves a long/lat pair to the GUN graph, and renders a point on the globe, if the local clients graph (browser local storage) or a connected graph (GUN-Relay) receive a new entry.<br>(the ```.on(graphname)``` subscribes to the GUN graph. Everything's new to the graph will automatically be rendered on the globe) Both local storage graph and/or relay graph changes!
