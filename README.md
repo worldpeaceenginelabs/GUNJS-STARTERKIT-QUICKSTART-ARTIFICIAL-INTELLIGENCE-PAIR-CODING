@@ -1,7 +1,11 @@
-# GUNJS-Starterkit+Quickstart
-#### A collection of tools you need to run a local-first, decentralized graph database.<br>
-For GunJS Wiki check also https://github.com/amark/gun/wiki<br>
+# GUNJS-Starterkit + Quickstart
+#### A collection of tools you need to run a local-first, decentralized graph database.
 <br>
+
+### For GunJS Wiki check https://github.com/amark/gun/wiki
+### If you have any more questions hit the GunJS community https://gitter.im/amark/gun
+<br>
+
 ##### GunJS can be explained as a decentralized alternative to cloud-based services like Dropbox and Firebase. Both Dropbox and Firebase provide cloud-based storage and synchronization of data, but with GunJS, the data is stored and synchronized across a decentralized network of peers, rather than relying on a central server. In this setup, each user's device acts as a node in the network, storing a copy of the data and making it available to other nodes. This means that data is always accessible, even if one node goes offline, because it can be retrieved from another node. GunJS also provides real-time synchronization, ensuring that all nodes in the network have the latest version of the data, similar to Dropbox and Firebase, but with the added benefits of improved security and privacy, as data is not controlled by a central authority. Additionally, GunJS allows for peer-to-peer data sharing, enabling users to directly exchange data without having to go through a central server. This makes it a flexible and scalable solution for real-time data storage and synchronization, similar to Firebase, but with a decentralized approach.<br>
 <br>
 
@@ -43,6 +47,7 @@ For GunJS Wiki check also https://github.com/amark/gun/wiki<br>
 #### https://gist.github.com/pedrouid/b4056fd1f754918ddae86b32cf7d803e (Web Cryptography API Examples - A collection of well commented, well ordered snippets for 20 algorithms)
 #### https://diafygi.github.io/webcrypto-examples/ (This table is live! Every ✓ or ✗ on this page is a test to see if your browser supports that method in WebCryptoAPI.)
 #### God bless the internet, open-source and collaboration. Amen 🙏😂
+<br>
 
 ## Authentication, encryption/hash, security
 ### https://github.com/worldpeaceenginelabs/DAuth
@@ -81,4 +86,9 @@ For GunJS Wiki check also https://github.com/amark/gun/wiki<br>
 
 ![image](https://user-images.githubusercontent.com/67427045/212865152-88544d46-f46b-4cd5-9d2e-4f2571dfb80b.png)
 ![image](https://user-images.githubusercontent.com/67427045/216111036-ee93b490-3506-42cf-a454-e416962b86d3.png)
-### This script saves a long/lat pair to the GUN graph, and renders a point on the globe, if the local clients graph (browser local storage) or a connected graph (GUN-Relay) receive a new entry.<br>(the ```.on(graphname)``` subscribes to the GUN graph. Everything's new to the graph will automatically be rendered on the globe) Both local storage graph and/or relay graph changes!
+### This script saves a long/lat pair to the GUN graph, and renders a point on the globe, if the local clients graph (browser local storage) or a connected graph (GUN-Relay) receive a new entry.<br>
+### The ```.on(graphname)``` subscribes to the GUN graph. Everything's new to the graph will automatically be rendered on the globe. Both local storage graph and/or relay graph changes!
+<br>
+
+# SEA - Security, Encryption, & Authorization
+https://gun.eco/docs/SEA
