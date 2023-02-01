@@ -11,8 +11,9 @@
 ##### He writes me prototypes and POCs, and i just modify them myself.
 ##### It makes everything soo much easier. It's perfect for checking ideas right away. [See for yourself](https://www.youtube.com/watch?v=ng438SIXyW4&t=100s)
 <br>
-Browser: https://openai.com/blog/chatgpt/<br>
-Desktop App (Win, Mac, Linux) https://github.com/lencx/ChatGPT (installables under releases)<br>
+
+**Browser:** https://openai.com/blog/chatgpt/ <br>
+**Desktop App (Win, Mac, Linux)** https://github.com/lencx/ChatGPT (installables at releases) <br>
 <br>
 
 ##### GunJS can be explained as a decentralized alternative to cloud-based services like Dropbox and Firebase. Both Dropbox and Firebase provide cloud-based storage and synchronization of data, but with GunJS, the data is stored and synchronized across a decentralized network of peers, rather than relying on a central server. In this setup, each user's device acts as a node in the network, storing a copy of the data and making it available to other nodes. This means that data is always accessible, even if one node goes offline, because it can be retrieved from another node. GunJS also provides real-time synchronization, ensuring that all nodes in the network have the latest version of the data, similar to Dropbox and Firebase, but with the added benefits of improved security and privacy, as data is not controlled by a central authority. Additionally, GunJS allows for peer-to-peer data sharing, enabling users to directly exchange data without having to go through a central server. This makes it a flexible and scalable solution for real-time data storage and synchronization, similar to Firebase, but with a decentralized approach.<br>
@@ -61,6 +62,9 @@ Desktop App (Win, Mac, Linux) https://github.com/lencx/ChatGPT (installables und
 ## Authentication, encryption/hash, security
 ### https://github.com/worldpeaceenginelabs/DAuth
 #### A decentralized OAuth / Metamask Login | Without server, files or API... Just 1kb of logic!
+
+### https://github.com/wuyanxin/totp.js
+#### TOTP(Time-based one-time password) generator, support for Google Authenticator [Demo](https://wuyanxin.github.io/totp.js/demo/index.html)
 
 ### https://github.com/antelle/argon2-browser
 #### Argon2 library compiled for browser runtime
