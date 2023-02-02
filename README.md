@@ -113,7 +113,7 @@
 ##### Note: Data is cryptographically owned by the user, there is no "app admin" or "website owner", this may change how you build apps but it guarantees better safety. Owners can authorize or give other users permission to edit the owner's data. Again, the owner does this, not the app developer or database admin.
 <br>
 
-## Frozen Space
+## Frozen Space - ```var data = "hello world"; var hash = await SEA.work(data, null, null, {name: "SHA-256"}); gun.get('#').get(hash).put(data);```
 ### (Hash Space, Content Id Space) The # operator is used. Gun interprets something like "Only allow data to be put here if its hash matches the appended hash object." This data cannot be changed or removed, only added to. Nobody owns this data.
 ##### Note: If nobody stores the data it may be forgotten, if the peers that store it are offline the data may not be found until they are online again. This is true of data in any space though.
 <br>
