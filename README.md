@@ -19,7 +19,7 @@
 ##### GunJS can be explained as a decentralized alternative to cloud-based services like Dropbox and Firebase. Both Dropbox and Firebase provide cloud-based storage and synchronization of data, but with GunJS, the data is stored and synchronized across a decentralized network of peers, rather than relying on a central server. In this setup, each user's device acts as a node in the network, storing a copy of the data and making it available to other nodes. This means that data is always accessible, even if one node goes offline, because it can be retrieved from another node. GunJS also provides real-time synchronization, ensuring that all nodes in the network have the latest version of the data, similar to Dropbox and Firebase, but with the added benefits of improved security and privacy, as data is not controlled by a central authority. Additionally, GunJS allows for peer-to-peer data sharing, enabling users to directly exchange data without having to go through a central server. This makes it a flexible and scalable solution for real-time data storage and synchronization, similar to Firebase, but with a decentralized approach.<br>
 <br>
 
-![image](https://user-images.githubusercontent.com/67427045/214804241-d1b2b365-fa5d-4b35-9a31-e3301acf466f.png)
+![image](https://user-images.githubusercontent.com/67427045/216622377-0ff6e755-a6b1-44c8-886c-5194f54fec7a.png)
 <br><br>
 
 # Starterkit Contents
@@ -61,7 +61,7 @@
 
 ## Authentication, encryption/hash, security
 ### https://github.com/worldpeaceenginelabs/GunJS-AUTH-SIGN-UP-LOGIN-LOGOUT
-#### Ready to go sign-up, login, logout for the decentralized database GunJS.
+#### Gun-Auth - Ready to go sign-up, login, logout for the decentralized database GunJS.
 
 ### https://github.com/wuyanxin/totp.js
 #### TOTP(Time-based one-time password) generator, support for Google Authenticator [Demo](https://wuyanxin.github.io/totp.js/demo/index.html)
