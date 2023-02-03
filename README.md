@@ -60,8 +60,8 @@
 <br>
 
 ## Authentication, encryption/hash, security
-### https://github.com/worldpeaceenginelabs/DAuth
-#### A decentralized OAuth / Metamask Login | Without server, files or API... Just 1kb of logic!
+### https://github.com/worldpeaceenginelabs/GunJS-AUTH-SIGN-UP-LOGIN-LOGOUT
+#### Ready to go sign-up, login, logout for the decentralized database GunJS.
 
 ### https://github.com/wuyanxin/totp.js
 #### TOTP(Time-based one-time password) generator, support for Google Authenticator [Demo](https://wuyanxin.github.io/totp.js/demo/index.html)
@@ -126,10 +126,13 @@
 <br>
 
 ## Sign-up, login, authentication, session management, and log-out
-### When a user signs up, the signup function creates a new user account with the given username and password. When a user logs in, the login function authenticates the user with the given username and password. When a user is authenticated, they are able to access their session data through the user object. The logout function logs the user out of their session.
+- When a user signs in or creates an account, their username and password are stored in the GUN database for recall.
+- The Passphrase the user chooses will be extended with PBKDF2 to make it a secure way to login.
+- When a user logs out, their session is terminated.
 <br>
 
-![image](https://user-images.githubusercontent.com/67427045/216167021-18b9e79b-8b47-4e41-8d79-7060c0dd2fed.png)
+[Code here](https://github.com/worldpeaceenginelabs/GunJS-AUTH-SIGN-UP-LOGIN-LOGOUT)
+![image](https://user-images.githubusercontent.com/67427045/216619993-5a2275cf-6b29-4799-9821-06b5dab69a36.png)
 <br><br>
 
 ## Store data encrypted to User Space
