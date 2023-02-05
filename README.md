@@ -103,6 +103,9 @@
 ##### Beware! Anyone can edit the data by default - to fix this, we have to use the User system. GUN is a universal graph which has 3 logical "spaces" protected by SEA:
 <br>
 
+![image](https://user-images.githubusercontent.com/67427045/216807753-fa226fc1-7b62-4d3c-9df1-e5977f006b18.png)<br>
+<br>
+
 ## Public Space - ```.get(graphname).put(data)``` https://gun.eco/docs/API
 ### Anyone can add, change, or remove data from here. Think of it as a giant wiki.
 ##### Note: Some data here may be encrypted such that the content stays secret, but it can always be overwritten. Imagine in real life someone hides a prize in a vault at the beach: Once it is found it may be damaged or moved, but only a person who knows the key can unlock it.
