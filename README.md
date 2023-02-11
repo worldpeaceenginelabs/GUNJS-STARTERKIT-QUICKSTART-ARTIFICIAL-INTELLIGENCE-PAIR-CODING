@@ -1,6 +1,12 @@
-# GUNJS-Starterkit<br>+ Quickstart<br>+ Artificial Intelligence Pair Programming
+# GUNJS-Starterkit
 #### A collection of tools you need to run a local-first, decentralized graph database.
+- Developer support
+- What is GunJS?
+- GunJS tools
+- Quickstart
 <br>
+
+# Developer support
 
 ### For GunJS Wiki check https://github.com/amark/gun/wiki
 ### If you have any more questions hit the GunJS community https://gitter.im/amark/gun
@@ -16,6 +22,7 @@
 **Desktop App (Win, Mac, Linux)** https://github.com/lencx/ChatGPT (installables at releases) <br>
 <br>
 
+# What is GunJS?
 ## GunJS GunDB Gun
 
 ##### GunJS can be explained as a decentralized alternative to cloud-based services like Dropbox and Firebase. Both Dropbox and Firebase provide cloud-based storage and synchronization of data, but with GunJS, the data is stored and synchronized across a decentralized network of peers, rather than relying on a central server. In this setup, each user's device acts as a node in the network, storing a copy of the data and making it available to other nodes. This means that data is always accessible, even if one node goes offline, because it can be retrieved from another node. GunJS also provides real-time synchronization, ensuring that all nodes in the network have the latest version of the data, similar to Dropbox and Firebase, but with the added benefits of improved security and privacy, as data is not controlled by a central authority. Additionally, GunJS allows for peer-to-peer data sharing, enabling users to directly exchange data without having to go through a central server. This makes it a flexible and scalable solution for real-time data storage and synchronization, similar to Firebase, but with a decentralized approach.<br>
@@ -29,8 +36,7 @@
 ![image](https://user-images.githubusercontent.com/67427045/216623143-a2144057-4d46-4318-b052-f435dc8a8990.png)
 <br><br>
 
-# Starterkit Contents
-<br>
+# GunJS Tools
 
 ## Gun, Desktop-Relay, Form, Relay Donation, Digital Globe (location-based services)
 ### https://github.com/amark/gun
@@ -56,10 +62,6 @@
 #### However, GUN is different to most other databases when it comes to dev vs prod setup in that the only distinction is that a production setup can maybe include a persistent storage option (e.g. AWS S3, IPFS...) for a participating relay peer. That's not mandatory though, browsers peers with their localStorage storage are sufficient more often than not, doesn't matter if you're still in development or already running your app in production with customers.<br>
 <br>
 
-### https://github.com/worldpeaceenginelabs/1-MEGABYTE-STORE
-#### A storage logic to distribute your whole user-database, but with only 1 Megabyte on each user's device. Works with 1, 100, 3333, and 8 Billion users but stays always 1 MB!!!<br>
-<br>
-
 ## Webcrypto API
 #### https://gist.github.com/pedrouid/b4056fd1f754918ddae86b32cf7d803e (Web Cryptography API Examples - A collection of well commented, well ordered snippets for 20 algorithms)
 #### https://diafygi.github.io/webcrypto-examples/ (This table is live! Every ✓ or ✗ on this page is a test to see if your browser supports that method in WebCryptoAPI.)
@@ -83,8 +85,8 @@
 #### Secure Remote Password (SRP)<br>
 <br>
 
-# QUICKSTART for components, apps, webapps, dapps... (the decentralized back-end)
-<br>
+# QUICKSTART
+##### for components, apps, webapps, dapps... (the decentralized back-end)
 
 ## Table of contents
 - GUN Relays
@@ -219,21 +221,21 @@ user.get(name).get(name).put(data) //store data in ```.get(name).get(name)``` in
 ![image](https://user-images.githubusercontent.com/67427045/216807753-fa226fc1-7b62-4d3c-9df1-e5977f006b18.png)<br>
 <br>
 
-## Public Space
+### Public Space
 ##### ```.get(name).put(data)``` https://gun.eco/docs/API
 
 ### Anyone can add, change, or remove data from here. Think of it as a giant wiki.
 ##### Note: Some data here may be encrypted such that the content stays secret, but it can always be overwritten. Imagine in real life someone hides a prize in a vault at the beach: Once it is found it may be damaged or moved, but only a person who knows the key can unlock it.
 <br>
 
-## User Space
+### User Space
 ##### ```user.get(name).put(data)``` https://gun.eco/docs/User
 
 ### (or Key Space) Only data signed with the user's key can be put. Uses SEA. This data can only be be changed, added or removed, by the owner. The data can be either private or publicly readable.
 ##### Note: Data is cryptographically owned by the user, there is no "app admin" or "website owner", this may change how you build apps but it guarantees better safety. Owners can authorize or give other users permission to edit the owner's data. Again, the owner does this, not the app developer or database admin.
 <br>
 
-## Frozen Space
+### Frozen Space
 ##### ```gun.get('#name').get(name).put(data);``` https://gun.eco/docs/Frozen
 
 ### (Hash Space, Content Id Space) The # operator is used. Gun interprets something like "Only allow data to be put here if its hash matches the appended hash object." This data cannot be changed or removed, only added to. Nobody owns this data.
@@ -244,7 +246,7 @@ user.get(name).get(name).put(data) //store data in ```.get(name).get(name)``` in
 ### https://gun.eco/docs/SEA
 <br>
 
-## Sign-up, login, authentication, session management, and log-out
+### Sign-up, login, authentication, session management, and log-out
 - When a user signs in or creates an account, their username and password are stored in the GUN database for recall.
 - The Passphrase the user chooses will be extended with PBKDF2 to make it a secure way to login.
 - When a user logs out, their session is terminated.
@@ -254,8 +256,8 @@ user.get(name).get(name).put(data) //store data in ```.get(name).get(name)``` in
 ![image](https://user-images.githubusercontent.com/67427045/216619993-5a2275cf-6b29-4799-9821-06b5dab69a36.png)
 <br><br>
 
-## Store data encrypted to User Space
-### This code encrypts the text 'secret text' with the user's public key using the Gun.SEA.encrypt method. The encrypted text is then stored in the user's private space using the db.user().get('encryptedText').put(encryptedText) method. NOTE: We need an authenticated (logged-in) user for this code to work.
+### Store data encrypted to User Space
+##### This code encrypts the text 'secret text' with the user's public key using the Gun.SEA.encrypt method. The encrypted text is then stored in the user's private space using the db.user().get('encryptedText').put(encryptedText) method. NOTE: We need an authenticated (logged-in) user for this code to work.
 ![image](https://user-images.githubusercontent.com/67427045/216165080-53222ac5-ee5a-49a1-9704-e506366a1b25.png)
 <br><br>
 
