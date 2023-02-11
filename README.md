@@ -16,7 +16,14 @@
 **Desktop App (Win, Mac, Linux)** https://github.com/lencx/ChatGPT (installables at releases) <br>
 <br>
 
+### GunJS GunDB Gun
+
 ##### GunJS can be explained as a decentralized alternative to cloud-based services like Dropbox and Firebase. Both Dropbox and Firebase provide cloud-based storage and synchronization of data, but with GunJS, the data is stored and synchronized across a decentralized network of peers, rather than relying on a central server. In this setup, each user's device acts as a node in the network, storing a copy of the data and making it available to other nodes. This means that data is always accessible, even if one node goes offline, because it can be retrieved from another node. GunJS also provides real-time synchronization, ensuring that all nodes in the network have the latest version of the data, similar to Dropbox and Firebase, but with the added benefits of improved security and privacy, as data is not controlled by a central authority. Additionally, GunJS allows for peer-to-peer data sharing, enabling users to directly exchange data without having to go through a central server. This makes it a flexible and scalable solution for real-time data storage and synchronization, similar to Firebase, but with a decentralized approach.<br>
+
+### Peer-to-peer pubsub
+
+##### Pubsub is an architecture where you subscribe to a “topic”, like “cats”, then whenever someone publishes a message of topic “cat”, you receive it. A peer-to-peer pubsub network means that anyone can publish, and anyone can subscribe.
+<br>
 <br>
 
 ![image](https://user-images.githubusercontent.com/67427045/216623143-a2144057-4d46-4318-b052-f435dc8a8990.png)
@@ -85,7 +92,7 @@
 ### [Gun Relay Donation Tool (Donate Decentralize UI)](https://github.com/worldpeaceenginelabs/DONATE-DECENTRALIZE-UI)<br>
 <br>
 
-## .get() | .put | .on - There are [more methods...](https://gun.eco/docs/API) but these three are the basic ones.
+## .get() | .put | .on - There are [more methods...](https://gun.eco/docs/API)(API) but these three are the basic ones.
 ### This is pretty much the core of everything. Notice how easy it is to connect your front-end code with the graph database GUN.
 ### Notice that no matter how complex your function is: You just drop the result into one or multible variables and connect them to the GUN write function (green boxes, green lines).
 ### Last, you can easily receive the data in any function, again, no matter how complex, by ```db.on(data => {//your function here});``` and get the data that you wrote to GUN before (red boxes, red lines)<br>
@@ -96,6 +103,33 @@
 ### This script saves a long/lat pair to the GUN graph, and renders a point on the globe, if the local clients graph (browser local storage) or a connected graph (GUN-Relay) receive a new entry.<br>
 ### The ```.on(graphname)``` subscribes to the GUN graph. Everything's new to the graph will automatically be rendered on the globe. Both local storage graph and/or relay graph changes!
 <br>
+
+# Content Addressing
+
+##### Your contents addresses will basically look like this: ```.get(name).get(name)``` The following examples feature always the same content address, but handled with different methods:
+
+### Fetching data
+
+```javascript
+.get(name).get(name).on(data) // subscribes to ```.get(name).get(name)``` in public space
+
+user.get(name).get(name).on(data) //subscribes to ```.get(name).get(name)``` in user space
+
+.get(name).get(name).once(data) // fetches ```.get(name).get(name)``` in public space once
+
+user.get(name).get(name).once(data) // fetches ```.get(name).get(name)``` in user space once
+```
+
+Note: GUN is a functional reactive database for streaming event-driven data, gotta love/hate buzzwords - right? This means that .on subscribes to realtime updates, and may get called many times. Meanwhile .once grabs the data once, which is useful for procedural operations.
+<br>
+
+### Storing data
+
+```javascript
+.get(name).get(name).put(data) // store data in ```.get(name).get(name)``` in public space
+
+user.get(name).get(name).put(data) //store data in ```.get(name).get(name)``` in user space
+```
 
 # Spaces
 
