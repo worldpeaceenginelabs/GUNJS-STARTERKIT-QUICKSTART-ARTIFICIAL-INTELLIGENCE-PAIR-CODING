@@ -87,16 +87,17 @@
 <br>
 
 ## Table of contents
-- Gun Relays
+- GUN Relays
 - Basic Principles
 - Content Addressing
 - Spaces
 - SEA (security, encryption, authentication)
-- more on relays
+- Understanding your GUN Relay
 <br>
 
 # GUN Relays
 ##### Gun works local first even without a relay, but for syncing between clients you need a relay
+
 ### [Gun Relay (How to run a node - Deploy a GUN relay server everywhere on GUN WIKI)](https://github.com/amark/gun/wiki#how-to-run-a-node---deploy-a-gun-relay-server-everywhere)
 ### [Gun Relay Desktop (Electron Gun)](https://github.com/worldpeaceenginelabs/ELECTRON-GUN)
 ### [Gun Relay Donation Tool (Donate Decentralize UI)](https://github.com/worldpeaceenginelabs/DONATE-DECENTRALIZE-UI)<br>
@@ -104,20 +105,84 @@
 
 # Basic Principles
 ##### .get() | .put | .on - There are [more methods...](https://gun.eco/docs/API)(API) but these three are the basic ones.
-### This is pretty much the core of everything. Notice how easy it is to connect your front-end code with the graph database GUN.
-### Notice that no matter how complex your function is: You just drop the result into one or multible variables and connect them to the GUN write function (green boxes, green lines).
-### Last, you can easily receive the data in any function, again, no matter how complex, by ```db.on(data => {//your function here});``` and get the data that you wrote to GUN before (red boxes, red lines)<br>
+
+##### This is pretty much the core of everything. Notice how easy it is to connect your front-end code with the graph database GUN.
+##### Notice that no matter how complex your function is: You just drop the result into one or multible variables and connect them to the GUN write function (green boxes, green lines).
+##### Last, you can easily receive the data in any function, again, no matter how complex, by ```db.on(data => {//your function here});``` and get the data that you wrote to GUN before (red boxes, red lines)<br>
 <br>
 
 ![image](https://user-images.githubusercontent.com/67427045/212865152-88544d46-f46b-4cd5-9d2e-4f2571dfb80b.png)
 ![image](https://user-images.githubusercontent.com/67427045/216111036-ee93b490-3506-42cf-a454-e416962b86d3.png)
-### This script saves a long/lat pair to the GUN graph, and renders a point on the globe, if the local clients graph (browser local storage) or a connected graph (GUN-Relay) receive a new entry.<br>
-### The ```.on(graphname)``` subscribes to the GUN graph. Everything's new to the graph will automatically be rendered on the globe. Both local storage graph and/or relay graph changes!
+##### This script saves a long/lat pair to the GUN graph, and renders a point on the globe, if the local clients graph (browser local storage) or a connected graph (GUN-Relay) receive a new entry.<br>
+##### The ```.on(data)``` subscribes to the GUN graph. Everything's new to the graph will automatically be rendered on the globe. Both local storage graph and/or relay graph changes!
 <br>
 
 # Content Addressing
 
-##### Your contents addresses will basically look like this: ```.get(name).get(name)``` The following examples feature always the same content address, but handled with different methods:
+#### I like to compare the graph structure to a folder system.
+
+![image](https://user-images.githubusercontent.com/67427045/218267190-e56225f4-4466-4cd2-867c-aa017f848257.png)
+<br><br>
+
+### Allowed types
+##### .put restricts the input to a specific subset:
+
+- objects: partials, circular, and nested
+- strings
+- numbers
+- booleans
+- null
+##### Note: Other values, like undefined, NaN, Infinity, arrays, will be rejected. ([Saving array in Gun](https://github.com/amark/gun/wiki/Snippets#saving-arrays-in-gun), but rather go for objects from the begin if possible)
+
+### You cannot save primitive values at the root level.
+```javascript
+gun.put("oops"); // error
+gun.get("odd").put("oops"); // error
+```
+##### You can circumvent this by specifying
+
+```javascript
+// Initialize GUN and tell it we will be storing all data local, and sync with relay http://localhost:8765/gun, and under the rootnode 'yourappname' in the graph...
+var db = Gun(['http://localhost:8765/gun']).get('yourappname')
+
+// ...then you can call the same content address as above without error
+gun.put("oops"); // ok
+gun.get("odd").put("oops"); // ok
+```
+
+##### btw: common is ```let gun = Gun();```, but i prefer no-brainer descriptions (what was Gun again?) ```let db = Gun();``` and then i call my database like
+
+```javascript
+db.put("oops"); // ok
+db.get("odd").put("oops"); // ok
+```
+
+
+### Saving objects
+```javascript
+gun.get('key').put({
+  property: 'value',
+  object: {
+    nested: true
+  }
+})
+```
+
+### Saving primitives
+
+```javascript
+// strings
+gun.get('person').get('name').put('Alice')
+
+// numbers
+gun.get('IoT').get('temperature').put(58.6)
+
+// booleans
+gun.get('player').get('alive').put(true)
+```
+
+##### So your contents addresses will basically look like this: ```.get(name).get(name)```
+##### The following examples feature always the same content address, but handled with different methods:
 
 ### Fetching data
 
@@ -151,17 +216,23 @@ user.get(name).get(name).put(data) //store data in ```.get(name).get(name)``` in
 ![image](https://user-images.githubusercontent.com/67427045/216807753-fa226fc1-7b62-4d3c-9df1-e5977f006b18.png)<br>
 <br>
 
-## Public Space - ```.get(graphname).put(data)``` https://gun.eco/docs/API
+## Public Space
+##### ```.get(name).put(data)``` https://gun.eco/docs/API
+
 ### Anyone can add, change, or remove data from here. Think of it as a giant wiki.
 ##### Note: Some data here may be encrypted such that the content stays secret, but it can always be overwritten. Imagine in real life someone hides a prize in a vault at the beach: Once it is found it may be damaged or moved, but only a person who knows the key can unlock it.
 <br>
 
-## User Space - ```user.get(graphname).put(data)``` https://gun.eco/docs/User
+## User Space
+##### ```user.get(name).put(data)``` https://gun.eco/docs/User
+
 ### (or Key Space) Only data signed with the user's key can be put. Uses SEA. This data can only be be changed, added or removed, by the owner. The data can be either private or publicly readable.
 ##### Note: Data is cryptographically owned by the user, there is no "app admin" or "website owner", this may change how you build apps but it guarantees better safety. Owners can authorize or give other users permission to edit the owner's data. Again, the owner does this, not the app developer or database admin.
 <br>
 
-## Frozen Space - ```var data = "hello world"; var hash = await SEA.work(data, null, null, {name: "SHA-256"}); gun.get('#').get(hash).put(data);``` https://gun.eco/docs/Frozen
+## Frozen Space
+##### ```gun.get('#name').get(name).put(data);``` https://gun.eco/docs/Frozen
+
 ### (Hash Space, Content Id Space) The # operator is used. Gun interprets something like "Only allow data to be put here if its hash matches the appended hash object." This data cannot be changed or removed, only added to. Nobody owns this data.
 ##### Note: If nobody stores the data it may be forgotten, if the peers that store it are offline the data may not be found until they are online again. This is true of data in any space though.
 <br>
