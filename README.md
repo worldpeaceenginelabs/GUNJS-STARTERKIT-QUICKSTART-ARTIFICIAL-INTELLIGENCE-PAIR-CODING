@@ -323,7 +323,7 @@ var db = Gun(['https://relay1.com/gun, https://relay2.com/gun, https://relay3.co
 
 >Incentivised or "donated" desktop relays go on and off, new come, old go. (have minimum 3 donated relays so they will balance each other out.
 
-You could go for a script which fills the {drelays} variable at the begin of the following code from a list of donated relays. The criteria to add and delete relays from that list could be their monthly uptime.
+##### You could go for a script which fills the {drelays} variable at the begin of the following code from a list of donated relays. The criteria to add and delete relays from that list could be their monthly uptime.
 
 ```javascript
 var drelays = relayUptimeFilter();
