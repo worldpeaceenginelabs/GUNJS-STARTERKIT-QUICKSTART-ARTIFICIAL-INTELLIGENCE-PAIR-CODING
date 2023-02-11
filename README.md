@@ -90,6 +90,7 @@
 - GUN Relays
 - Basic Principles
 - Content Addressing
+- Fetching and storing data
 - Spaces
 - SEA (security, encryption, authentication)
 - Understanding your GUN Relay
@@ -119,7 +120,7 @@
 
 # Content Addressing
 
-#### I like to compare the graph structure to a folder system.
+#### Compare the graph structure to a folder system.
 
 ![image](https://user-images.githubusercontent.com/67427045/218267190-e56225f4-4466-4cd2-867c-aa017f848257.png)
 <br><br>
@@ -145,7 +146,7 @@ gun.get("odd").put("oops"); // error
 // Initialize GUN and tell it we will be storing all data local, and sync with relay http://localhost:8765/gun, and under the rootnode 'yourappname' in the graph...
 var db = Gun(['http://localhost:8765/gun']).get('yourappname')
 
-// ...then you can call the same content address as above without error
+// ...then you can call the same content addresses as above without error
 gun.put("oops"); // ok
 gun.get("odd").put("oops"); // ok
 ```
@@ -180,6 +181,8 @@ gun.get('IoT').get('temperature').put(58.6)
 // booleans
 gun.get('player').get('alive').put(true)
 ```
+
+# Fetching and storing data
 
 ##### So your contents addresses will basically look like this: ```.get(name).get(name)```
 ##### The following examples feature always the same content address, but handled with different methods:
@@ -235,9 +238,6 @@ user.get(name).get(name).put(data) //store data in ```.get(name).get(name)``` in
 
 ### (Hash Space, Content Id Space) The # operator is used. Gun interprets something like "Only allow data to be put here if its hash matches the appended hash object." This data cannot be changed or removed, only added to. Nobody owns this data.
 ##### Note: If nobody stores the data it may be forgotten, if the peers that store it are offline the data may not be found until they are online again. This is true of data in any space though.
-<br>
-
-![image](https://user-images.githubusercontent.com/67427045/216159085-d90bd35e-8b6b-421d-8e7e-5a3f4a1ae365.png)<br>
 <br><br>
 
 # SEA - Security, Encryption, & Authorization
@@ -257,3 +257,76 @@ user.get(name).get(name).put(data) //store data in ```.get(name).get(name)``` in
 ## Store data encrypted to User Space
 ### This code encrypts the text 'secret text' with the user's public key using the Gun.SEA.encrypt method. The encrypted text is then stored in the user's private space using the db.user().get('encryptedText').put(encryptedText) method. NOTE: We need an authenticated (logged-in) user for this code to work.
 ![image](https://user-images.githubusercontent.com/67427045/216165080-53222ac5-ee5a-49a1-9704-e506366a1b25.png)
+<br><br>
+
+# Understanding your GUN Relay
+
+### Question 1
+##### ok so this sounds like a very complex setup to be decentralized and I dont want to have to pay for a bunch of relays I own myself. I highly doubt any of my customers would "donate" a relay. Wouldnt that mean it has to be always on? Or on a decent amount of the time? And all this wiping a relay and concern about security and encryption....makes me think GUN is not ready for production use
+
+### Answer 1
+##### I am actually about to go into my first production with my first Gun dapp, Couchsurfing Decentralized. Should be ready by the middle of the next week.
+
+##### You say complex, but what does a centralized setup look like?
+##### domain, dns provider, server
+
+##### What does a decentralised setup look like?
+##### domain, dns provider, relay
+
+##### So not that different.
+##### But full control, flexibility, speed(at least Gun), privacy, and endless potential because of the new possible design approachs. 
+
+##### 😂 I hear that often first, but of course you need an incentive to activate your customer/user to donate a relay on, for instance, their desktop. A value could be a faster access due to your user hosting a relay for instance.
+
+##### And no, relays do not have to be always on.
+
+#####  Gun is a local first database which works out of the box even without a relay. Then just limited to its local graph and does not sync.
+##### For your understanding: you could have a local app which's database is Gun and which runs years local without even ever connecting to a relay.
+
+##### By experience a relay runs days, weeks, rather month, before it gets wiped, but I estimate the median lifetime of a relay to be a few hours to 48hours max. (just for my worst case calculations!)
+
+##### In this time(few hours to 48h) we can sync the local graphs(databases) of our clients with no problem.
+
+##### If the origin client of a piece of data is offline, the relays will continue to distribute the synced piece of data.
+
+##### This means in practice, our piece of data is cached minimum a few hours, 48 hours, or even month.
+##### And there is a high chance the user comes back within 48 hours, making the piece of data available to the relays again.
+
+##### Now imagine all of your 10 relays get wiped at once.
+
+##### After, the clients and the relays will start it's operation like nothing had happened before. So the relays start again to sync the local graphs of the clients to each other, based on the clients subscription/content-address ```gun.get(something).get(something).on(data)```
+
+### Question 2
+##### you say they have a lifetime of 48 hours max....how does that work? Does the relay server actually shut down?
+
+### Answer 2
+##### I say 48 hours max, only for my worst case calculations!
+##### In reality you spin up a relay and it runs continously for weeks and month.
+
+##### And its more about a reset which could cause a wipe, or a wipe causing a reset. Its not so much about relays would shut down(except in the following free tier example), they are stable, they run and they reset if necessary.
+
+##### So almost Zero maintainence!
+
+##### But possible:
+
+- If its a free tier relay, with limitations, then it has maybe not 24h uptime, or gets wiped every x hours/days. (have minimum 3 of them at different free providers so they will balance each other out)
+- You have no control over relays that you dont own. They could be wiped any time. (have minimum 3 foreign relays so they will balance each other out)
+- Incentivised or "donated" desktop relays go on and off, new come, old go. (have minimum 3 donated relays so they will balance each other out.
+##### Makes 9 individual "dangerous" relays, but if we would go for the following code, which combines all 9 of them, i promise you no problems at all. Thats decentralization at its best...
+
+```javascript
+// this code says all your Gun app client users initialize their Gun databases with all 9 relays at once.
+var db = Gun(['https://relay1.com/gun, https://relay2.com/gun, https://relay3.com/gun, https://relay4.com/gun, https://relay5.com/gun, https://relay6.com/gun, https://relay7.com/gun, https://relay8.com/gun, https://relay9.com/gun,'])
+```
+
+>Incentivised or "donated" desktop relays go on and off, new come, old go. (have minimum 3 donated relays so they will balance each other out.
+
+You could go for a script which fills the {drelays} variable at the begin of the following code from a list of donated relays. The criteria to add and delete relays from that list could be their monthly uptime.
+
+```javascript
+var drelays = relayUptimeFilter();
+
+var db = Gun(['{drelays}, https://relay1.com/gun, https://relay2.com/gun, https://relay3.com/gun, https://relay4.com/gun, https://relay5.com/gun, https://relay6.com/gun'])
+```
+
+##### Same could actually work also for relays you dont own. Maybe have a bot crawling them all, and then filter.
