@@ -317,7 +317,7 @@ user.get(name).get(name).put(data) //store data in ```.get(name).get(name)``` in
 ##### Makes 9 individual "dangerous" relays, but if we would go for the following code, which combines all 9 of them, i promise you no problems at all. Thats decentralization at its best...
 
 ```javascript
-// this code says all your Gun app client users initialize their Gun databases with all 9 relays at once.
+// this code says all your Gun app client users initialize their Gun instance with all 9 relays at once.
 var db = Gun(['https://relay1.com/gun, https://relay2.com/gun, https://relay3.com/gun, https://relay4.com/gun, https://relay5.com/gun, https://relay6.com/gun, https://relay7.com/gun, https://relay8.com/gun, https://relay9.com/gun,'])
 ```
 
