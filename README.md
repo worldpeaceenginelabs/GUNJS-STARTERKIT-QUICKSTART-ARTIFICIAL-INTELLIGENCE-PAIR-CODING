@@ -239,8 +239,14 @@ user.get(name).get(name).put(data) //store data in ```.get(name).get(name)``` in
 ##### ```gun.get('#name').get(name).put(data);``` https://gun.eco/docs/Frozen
 
 ### (Hash Space, Content Id Space) The # operator is used. Gun interprets something like "Only allow data to be put here if its hash matches the appended hash object." This data cannot be changed or removed, only added to. Nobody owns this data.
-##### Note: If nobody stores the data it may be forgotten, if the peers that store it are offline the data may not be found until they are online again. This is true of data in any space though.
-<br><br>
+##### Note: If nobody stores the data it may be forgotten, if the peers that store it are offline the data may not be found until they are online again. This is true of data in any space though.<br>
+
+##### Data can be in graphs that link across different spaces. So don't assume data is only in one space! For instance, user data can point to public data which can be edited by anyone, just not the link itself. Likewise, public data could link to frozen or user data, but anyone could edit the link itself. One very powerful combination is frozen links to user data, nobody can edit the link but the data itself can be updated by the owner.<br>
+
+```gun.get('#users').map().get('country').on(data => console.log(data))```<br>
+
+##### Pretend that #users is a frozen list where each item links to a user profile. Rather than a user saving {name: "Alice", country: "USA"} to their profile, they could instead link to the public wiki about their country. Now our query will get the the country data of each user, like {name: "United States of America", code: "USA", population: 300,000,000} as it is updated in realtime.<br>
+<br>
 
 # SEA - Security, Encryption, & Authorization
 ### https://gun.eco/docs/SEA
