@@ -144,7 +144,7 @@
 ##### Note: Data is cryptographically owned by the user, there is no "app admin" or "website owner", this may change how you build apps but it guarantees better safety. Owners can authorize or give other users permission to edit the owner's data. Again, the owner does this, not the app developer or database admin.
 <br>
 
-## Frozen Space = Content Addressing
+# Frozen Space = Content Addressing
 ##### ```gun.get('#name').get(name).put(data);``` https://gun.eco/docs/Frozen
 
 ### (Hash Space, Content Id Space) The # operator is used. Gun interprets something like "Only allow data to be put here if its hash matches the appended hash object." This data cannot be changed or removed, only added to. Nobody owns this data.
@@ -206,7 +206,7 @@ gun.put("oops"); // ok
 gun.get("odd").put("oops"); // ok
 ```
 
-##### btw: common is ```let gun = Gun();```, but i prefer no-brainer descriptions (what was Gun again?) ```let db = Gun();``` and then i call my database like
+##### btw: common is ```let gun = Gun();```, but no-brainer descriptions are preferable (what was Gun again?) ```let db = Gun();``` and then you can call your database like
 
 ```javascript
 db.put("oops"); // ok
