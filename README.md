@@ -169,18 +169,18 @@
 ![image](https://user-images.githubusercontent.com/67427045/219666590-b3e60857-2e4c-4d3e-a1c1-f70514569b8f.png)
 <br>
 
-##### Immutable links to mutable user content
+### Immutable links to mutable user content
 
-##### Write
+##### Storing data
 ```javascript
 // Logged in user writes a message in his signed graph. Notice, it should be an object in order to have a soul
-gun.user().get('messages').set({text:'hello'}).on(async data => { store message in User Space then...
+gun.user().get('messages').set({text:'hello'}).on(async data => { //store message in User Space then...
     let soul = data._["#"] // gets us the Soul of the just stored node !!!Gun.node.soul(data) is DEPRECATED!!! 
     let hash = await SEA.work(soul, null, null,{name:'SHA-256'}) // gets us the hash of the above data
     gun.get('#messages').get(hash).put(soul)  // User puts a hashed soul of the message in a public content-addressed node
 })
 ```
-##### Read
+##### Fetching data
 ```javascript
 // Others can read the message later with the soul
 gun.get('#messages').map().on(data=> {
