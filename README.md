@@ -171,15 +171,16 @@
 
 ##### Immutable links to mutable user content
 
+##### Write
 ```javascript
 // Logged in user writes a message in his signed graph. Notice, it should be an object in order to have a soul
-gun.user().get('messages').set({text:'hello'}).on(async data => {
-    let soul = Gun.node.soul(data)
-    let hash = await SEA.work(soul, null, null,{name:'SHA-256'})
+gun.user().get('messages').set({text:'hello'}).on(async data => { store message in User Space then...
+    let soul = data._["#"] // gets us the Soul of the just stored node !!!Gun.node.soul(data) is DEPRECATED!!! 
+    let hash = await SEA.work(soul, null, null,{name:'SHA-256'}) // gets us the hash of the above data
     gun.get('#messages').get(hash).put(soul)  // User puts a hashed soul of the message in a public content-addressed node
 })
 ```
-
+##### Read
 ```javascript
 // Others can read the message later with the soul
 gun.get('#messages').map().on(data=> {
@@ -253,8 +254,8 @@ gun.get('player').get('alive').put(true)
 
 # Fetching and storing data
 
-##### So your contents addresses will basically look like this: ```.get(name).get(name)```
-##### The following examples feature always the same content address, but handled with different methods:
+##### So your references will basically look like this: ```.get(name).get(name)```
+##### The following examples feature always the same reference, but handled with different methods:
 <br>
 
 ### Fetching data
