@@ -100,7 +100,7 @@
 <br>
 
 # GUN Relays
-##### Gun works local first even without a relay, but for syncing between clients you need a relay
+##### Gun works local first even without ever using a relay, but for syncing between clients you need a relay
 
 ### [Gun Relay (How to run a node - Deploy a GUN relay server everywhere on GUN WIKI)](https://github.com/amark/gun/wiki#how-to-run-a-node---deploy-a-gun-relay-server-everywhere)
 ### [Gun Relay Desktop (Electron Gun)](https://github.com/worldpeaceenginelabs/ELECTRON-GUN)
