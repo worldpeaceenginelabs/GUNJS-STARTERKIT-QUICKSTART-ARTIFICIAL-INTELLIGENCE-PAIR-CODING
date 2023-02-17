@@ -148,9 +148,22 @@
 ##### ```gun.get('#name').get(name).put(data);``` https://gun.eco/docs/Frozen
 
 ### (Hash Space, Content Id Space) The # operator is used. Gun interprets something like "Only allow data to be put here if its hash matches the appended hash object." This data cannot be changed or removed, only added to. Nobody owns this data.
-##### Note: If nobody stores the data it may be forgotten, if the peers that store it are offline the data may not be found until they are online again. This is true of data in any space though.<br>
+##### Note: If nobody stores the data it may be forgotten, if the peers that store it are offline the data may not be found until they are online again. This is true of data in any space though.<br><br>
 
-##### Data can be in graphs that link across different spaces. So don't assume data is only in one space! For instance, user data can point to public data which can be edited by anyone, just not the link itself. Likewise, public data could link to frozen or user data, but anyone could edit the link itself. One very powerful combination is frozen links to user data, nobody can edit the link but the data itself can be updated by the owner.<br>
+### Content Addressing (general explainer)
+##### When data is added to a hash space, its contents are hashed using a cryptographic algorithm, producing a unique hash value. This hash value is then appended to the location in the content ID space where the data is being added.
+
+##### Subsequently, if anyone wants to add more data to that same location, they must include the same hash value in their request. This ensures that only data with the correct hash value can be added to that location.
+
+##### Once data is added to a hash space, it cannot be changed or removed. This means that the data is immutable and its contents remain fixed over time.
+
+##### Nobody owns the data in a hash space, as it is stored in a decentralized and distributed network. This makes it difficult for any individual or entity to exert control over the data.
+
+#####  Once you know the CID of a file on the network, you have all you need for the network to locate and return the file back to you. 
+<br>
+
+### Data can be in graphs that link across different spaces.
+##### So don't assume data is only in one space! For instance, user data can point to public data which can be edited by anyone, just not the link itself. Likewise, public data could link to frozen or user data, but anyone could edit the link itself. One very powerful combination is frozen links to user data, nobody can edit the link but the data itself can be updated by the owner.<br>
 <br>
 
 ![image](https://user-images.githubusercontent.com/67427045/219666590-b3e60857-2e4c-4d3e-a1c1-f70514569b8f.png)
