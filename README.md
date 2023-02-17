@@ -91,9 +91,10 @@
 ## Table of contents
 - GUN Relays
 - Basic Principles
-- Content Addressing
-- Fetching and storing data
 - Spaces
+- Frozen Space = Content Addressing
+- Comparing the graph structure to a folder system
+- Fetching and storing data
 - SEA (security, encryption, authentication)
 - Understanding your GUN Relay
 <br>
@@ -120,11 +121,63 @@
 ##### The ```.on(data)``` subscribes to the GUN graph. Everything's new to the graph will automatically be rendered on the globe. Both local storage graph and/or relay graph changes!
 <br>
 
-# Content Addressing
+# Spaces
 
-#### Compare the graph structure to a folder system.
+##### GUN supports more than just key/value pairs, it is a graph database that can store SQL-like tables, JSON-like documents, files and livestreaming video, plus relational and hypergraph data!
+##### Beware! Anyone can edit the data by default - to fix this, we have to use the User system. GUN is a universal graph which has 3 logical "spaces" protected by SEA:
+<br>
 
-![image](https://user-images.githubusercontent.com/67427045/218267190-e56225f4-4466-4cd2-867c-aa017f848257.png)
+![image](https://user-images.githubusercontent.com/67427045/216807753-fa226fc1-7b62-4d3c-9df1-e5977f006b18.png)<br>
+<br>
+
+### Public Space
+##### ```.get(name).put(data)``` https://gun.eco/docs/API
+
+### Anyone can add, change, or remove data from here. Think of it as a giant wiki.
+##### Note: Some data here may be encrypted such that the content stays secret, but it can always be overwritten. Imagine in real life someone hides a prize in a vault at the beach: Once it is found it may be damaged or moved, but only a person who knows the key can unlock it.
+<br>
+
+### User Space
+##### ```user.get(name).put(data)``` https://gun.eco/docs/User
+
+### (or Key Space) Only data signed with the user's key can be put. Uses SEA. This data can only be be changed, added or removed, by the owner. The data can be either private or publicly readable.
+##### Note: Data is cryptographically owned by the user, there is no "app admin" or "website owner", this may change how you build apps but it guarantees better safety. Owners can authorize or give other users permission to edit the owner's data. Again, the owner does this, not the app developer or database admin.
+<br>
+
+## Frozen Space = Content Addressing
+##### ```gun.get('#name').get(name).put(data);``` https://gun.eco/docs/Frozen
+
+### (Hash Space, Content Id Space) The # operator is used. Gun interprets something like "Only allow data to be put here if its hash matches the appended hash object." This data cannot be changed or removed, only added to. Nobody owns this data.
+##### Note: If nobody stores the data it may be forgotten, if the peers that store it are offline the data may not be found until they are online again. This is true of data in any space though.<br>
+
+##### Data can be in graphs that link across different spaces. So don't assume data is only in one space! For instance, user data can point to public data which can be edited by anyone, just not the link itself. Likewise, public data could link to frozen or user data, but anyone could edit the link itself. One very powerful combination is frozen links to user data, nobody can edit the link but the data itself can be updated by the owner.<br>
+<br>
+
+![image](https://user-images.githubusercontent.com/67427045/219666590-b3e60857-2e4c-4d3e-a1c1-f70514569b8f.png)
+<br>
+
+##### Immutable links to mutable user content
+
+```javascript
+// Logged in user writes a message in his signed graph. Notice, it should be an object in order to have a soul
+gun.user().get('messages').set({text:'hello'}).on(async data => {
+    let soul = Gun.node.soul(data)
+    let hash = await SEA.work(soul, null, null,{name:'SHA-256'})
+    gun.get('#messages').get(hash).put(soul)  // User puts a hashed soul of the message in a public content-addressed node
+})
+```
+
+```javascript
+// Others can read the message later with the soul
+gun.get('#messages').map().on(data=> {
+    gun.get(data).once((d=>console.log(d))) // {text:'hello'} 
+})
+```
+<br>
+
+# Comparing the graph structure to a folder system
+
+![image](https://user-images.githubusercontent.com/67427045/219680043-de1cf0ee-ff0b-4f7a-9726-a58966197ca5.png)
 <br><br>
 
 ### Allowed types
@@ -183,11 +236,13 @@ gun.get('IoT').get('temperature').put(58.6)
 // booleans
 gun.get('player').get('alive').put(true)
 ```
+<br>
 
 # Fetching and storing data
 
 ##### So your contents addresses will basically look like this: ```.get(name).get(name)```
 ##### The following examples feature always the same content address, but handled with different methods:
+<br>
 
 ### Fetching data
 
@@ -201,7 +256,7 @@ user.get(name).get(name).on(data) //subscribes to ```.get(name).get(name)``` in 
 user.get(name).get(name).once(data) // fetches ```.get(name).get(name)``` in user space once
 ```
 
-Note: GUN is a functional reactive database for streaming event-driven data, gotta love/hate buzzwords - right? This means that .on subscribes to realtime updates, and may get called many times. Meanwhile .once grabs the data once, which is useful for procedural operations.
+##### Note: GUN is a functional reactive database for streaming event-driven data, gotta love/hate buzzwords - right? This means that .on subscribes to realtime updates, and may get called many times. Meanwhile .once grabs the data once, which is useful for procedural operations.
 <br>
 
 ### Storing data
@@ -211,41 +266,6 @@ Note: GUN is a functional reactive database for streaming event-driven data, got
 
 user.get(name).get(name).put(data) //store data in ```.get(name).get(name)``` in user space
 ```
-
-# Spaces
-
-##### GUN supports more than just key/value pairs, it is a graph database that can store SQL-like tables, JSON-like documents, files and livestreaming video, plus relational and hypergraph data!
-##### Beware! Anyone can edit the data by default - to fix this, we have to use the User system. GUN is a universal graph which has 3 logical "spaces" protected by SEA:
-<br>
-
-![image](https://user-images.githubusercontent.com/67427045/216807753-fa226fc1-7b62-4d3c-9df1-e5977f006b18.png)<br>
-<br>
-
-### Public Space
-##### ```.get(name).put(data)``` https://gun.eco/docs/API
-
-### Anyone can add, change, or remove data from here. Think of it as a giant wiki.
-##### Note: Some data here may be encrypted such that the content stays secret, but it can always be overwritten. Imagine in real life someone hides a prize in a vault at the beach: Once it is found it may be damaged or moved, but only a person who knows the key can unlock it.
-<br>
-
-### User Space
-##### ```user.get(name).put(data)``` https://gun.eco/docs/User
-
-### (or Key Space) Only data signed with the user's key can be put. Uses SEA. This data can only be be changed, added or removed, by the owner. The data can be either private or publicly readable.
-##### Note: Data is cryptographically owned by the user, there is no "app admin" or "website owner", this may change how you build apps but it guarantees better safety. Owners can authorize or give other users permission to edit the owner's data. Again, the owner does this, not the app developer or database admin.
-<br>
-
-### Frozen Space
-##### ```gun.get('#name').get(name).put(data);``` https://gun.eco/docs/Frozen
-
-### (Hash Space, Content Id Space) The # operator is used. Gun interprets something like "Only allow data to be put here if its hash matches the appended hash object." This data cannot be changed or removed, only added to. Nobody owns this data.
-##### Note: If nobody stores the data it may be forgotten, if the peers that store it are offline the data may not be found until they are online again. This is true of data in any space though.<br>
-
-##### Data can be in graphs that link across different spaces. So don't assume data is only in one space! For instance, user data can point to public data which can be edited by anyone, just not the link itself. Likewise, public data could link to frozen or user data, but anyone could edit the link itself. One very powerful combination is frozen links to user data, nobody can edit the link but the data itself can be updated by the owner.<br>
-
-```gun.get('#users').map().get('country').on(data => console.log(data))```<br>
-
-##### Pretend that #users is a frozen list where each item links to a user profile. Rather than a user saving {name: "Alice", country: "USA"} to their profile, they could instead link to the public wiki about their country. Now our query will get the the country data of each user, like {name: "United States of America", code: "USA", population: 300,000,000} as it is updated in realtime.<br>
 <br>
 
 # SEA - Security, Encryption, & Authorization
