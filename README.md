@@ -166,7 +166,7 @@
 ##### So don't assume data is only in one space! For instance, user data can point to public data which can be edited by anyone, just not the link itself. Likewise, public data could link to frozen or user data, but anyone could edit the link itself. One very powerful combination is frozen links to user data, nobody can edit the link but the data itself can be updated by the owner.<br>
 <br>
 
-![image](https://user-images.githubusercontent.com/67427045/219666590-b3e60857-2e4c-4d3e-a1c1-f70514569b8f.png)
+![image](https://user-images.githubusercontent.com/67427045/219846297-1282ea4d-f377-4265-9623-cbe16059e3cb.png)
 <br>
 
 ### Immutable links to mutable user content
@@ -175,11 +175,12 @@
 ```javascript
 // Logged in user writes a message in his signed graph. Notice, it should be an object in order to have a soul
 gun.user().get('messages').set({text:'hello'}).on(async data => { //store message in User Space then...
-    let soul = data._["#"] // gets us the Soul of the just stored node !!!Gun.node.soul(data) is DEPRECATED!!! 
+    let soul = data._["#"] // gets us the Soul of the just stored node 
     let hash = await SEA.work(soul, null, null,{name:'SHA-256'}) // gets us the hash of the above data
     gun.get('#messages').get(hash).put(soul)  // User puts a hashed soul of the message in a public content-addressed node
 })
 ```
+
 ##### Fetching data
 ```javascript
 // Others can read the message later with the soul
