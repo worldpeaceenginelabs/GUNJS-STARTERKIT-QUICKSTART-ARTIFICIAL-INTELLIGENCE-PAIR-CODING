@@ -214,7 +214,7 @@ gun.get("odd").put("oops"); // error
 
 ```javascript
 // Initialize GUN and tell it we will be storing all data local, and sync with relay http://localhost:8765/gun, and under the rootnode 'yourappname' in the graph...
-var db = Gun(['http://localhost:8765/gun']).get('yourappname')
+var gun = Gun(['http://localhost:8765/gun']).get('yourappname')
 
 // ...then you can call the same content addresses as above without error
 gun.put("oops"); // ok
