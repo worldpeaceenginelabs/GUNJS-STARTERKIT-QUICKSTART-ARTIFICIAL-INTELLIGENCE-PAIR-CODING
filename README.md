@@ -158,6 +158,8 @@
 ##### Note: If nobody stores the data it may be forgotten, if the peers that store it are offline the data may not be found until they are online again. This is true of data in any space though.<br><br>
 
 ### Content Addressing (general explainer)
+![image](https://user-images.githubusercontent.com/67427045/219853021-062d9d2e-df96-4ad3-9094-43e0270d9d98.png)
+
 ##### When data is added to a hash space, its contents are hashed using a cryptographic algorithm, producing a unique hash value. This hash value is then appended to the location in the content ID space where the data is being added.
 
 ##### Subsequently, if anyone wants to add more data to that same location, they must include the same hash value in their request. This ensures that only data with the correct hash value can be added to that location.
