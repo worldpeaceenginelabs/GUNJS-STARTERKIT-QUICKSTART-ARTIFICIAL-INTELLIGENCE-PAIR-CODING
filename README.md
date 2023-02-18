@@ -3,6 +3,7 @@
 - Developer support
 - What is GunJS?
 - GunJS tools
+- Blueprints
 - Quickstart
 <br>
 
@@ -83,6 +84,12 @@
  
 ### https://github.com/mozilla/node-srp
 #### Secure Remote Password (SRP)<br>
+<br>
+
+# BLUEPRINTS
+##### A collection of blueprints to give you an impression what a Gun app looks underneath
+- [METAVERSE-DAO Dapp Blueprints](https://github.com/worldpeaceenginelabs/METAVERSE-DAO_CLOUD-ATLAS/blob/master/dapps.md)<br>
+- your Gun App blueprints here...
 <br>
 
 # QUICKSTART
