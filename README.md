@@ -257,7 +257,7 @@ gun.user(123)
 
 # Comparing the graph structure to a folder system
 
-![image](https://user-images.githubusercontent.com/67427045/219680043-de1cf0ee-ff0b-4f7a-9726-a58966197ca5.png)
+![image](https://user-images.githubusercontent.com/67427045/219963093-6dd6b454-947a-429e-a2c5-e00d46028afe.png)
 <br><br>
 
 ### Allowed types
