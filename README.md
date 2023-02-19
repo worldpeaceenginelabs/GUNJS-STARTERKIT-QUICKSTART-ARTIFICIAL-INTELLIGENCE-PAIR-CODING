@@ -199,6 +199,60 @@ gun.get('#messages').map().on(data=> {
 ```
 <br>
 
+### Immutable links to mutable user content with data from variable
+###### Content-addressed post
+
+##### Storing data
+```javascript
+function onSubmit{
+// Logged in user stores a post in his signed graph. Notice, it should be an object in order to have a soul
+let data = {name: 'Alex', city: 'New York', description: 'blabla', zoomLink: 'https://zoom.us/5sdf4w', long: '50.00', lat: '14.0'}
+
+gun.user(user.is).get('post1').put(data).on(async data => { //store message in User Space then...
+    let soul = data._["#"] // gets us the Soul of the just stored node
+    let hash = await SEA.work(soul, null, null,{name:'SHA-256'}) // gets us the hash of the above data
+    gun.get('#post1').get(hash).put(soul)  // User puts a hashed soul of the Couch in a public content-addressed node
+})}
+```
+
+##### Fetching data
+```javascript
+// Others can read the post later with the soul
+gun.get('#post1').map().on()
+```
+<br>
+
+### Immutable links to mutable user content with [SEA.certify](https://gun.eco/docs/SEA.certify)
+###### Content-addressed post, other users can react to our post (user.is and user(123) are the same in example)
+
+##### Storing data
+```javascript
+function onSubmit{
+// Logged in user(123) stores a post in his signed graph. Notice, it should be an object in order to have a soul
+let data = {name: 'Alex', city: 'New York', description: 'blabla', zoomLink: 'https://zoom.us/5sdf4w', long: '50.00', lat: '14.0'}
+
+gun.user(user.is).get('post1').put(data).on(async data => { //store message in User Space of user(123) then...
+    let soul = data._["#"] // gets us the Soul of the just stored node
+    let hash = await SEA.work(soul, null, null,{name:'SHA-256'}) // gets us the hash of the above data
+    let certificate = await SEA.certify("*", {"*": "interestedpost1", "+": "*"}, user._.sea); // let users write into User Space of the post issuer. (user.is/user(123))
+    gun.get('#post1').get(hash).put(soul, {opt: {cert: certificate}})  // User puts a hashed soul of the Couch in a public content-addressed node
+})}
+```
+
+##### Fetching data
+```javascript
+// Others can read the post later with the soul
+gun.get('#post1').map().on()
+```
+
+##### Now we have a content-addressed post and users will store their interest or participation in the user space of the post issuer/publisher. (user(123))
+
+```javascript
+gun.user(123)
+.get(interestedpost1).put({pubkey: {user.is}, interested: true/false}, {opt: {cert: certificate}})
+```
+<br>
+
 # Comparing the graph structure to a folder system
 
 ![image](https://user-images.githubusercontent.com/67427045/219680043-de1cf0ee-ff0b-4f7a-9726-a58966197ca5.png)
