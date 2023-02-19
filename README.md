@@ -211,7 +211,7 @@ let data = {name: 'Alex', city: 'New York', description: 'blabla', zoomLink: 'ht
 gun.user(user.is).get('post1').put(data).on(async data => { //store message in User Space then...
     let soul = data._["#"] // gets us the Soul of the just stored node
     let hash = await SEA.work(soul, null, null,{name:'SHA-256'}) // gets us the hash of the above data
-    gun.get('#post1').get(hash).put(soul)  // User puts a hashed soul of the Couch in a public content-addressed node
+    gun.get('#post1').get(hash).put(soul)  // User puts a hashed soul of post1 in a public content-addressed node
 })}
 ```
 
@@ -235,7 +235,7 @@ gun.user(user.is).get('post1').put(data).on(async data => { //store message in U
     let soul = data._["#"] // gets us the Soul of the just stored node
     let hash = await SEA.work(soul, null, null,{name:'SHA-256'}) // gets us the hash of the above data
     let certificate = await SEA.certify("*", {"*": "interestedpost1", "+": "*"}, user._.sea); // let users write into User Space of the post issuer. (user.is/user(123))
-    gun.get('#post1').get(hash).put(soul, {opt: {cert: certificate}})  // User puts a hashed soul of the Couch in a public content-addressed node
+    gun.get('#post1').get(hash).put(soul, {opt: {cert: certificate}})  // User puts a hashed soul of post1 in a public content-addressed node
 })}
 ```
 
