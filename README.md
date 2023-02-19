@@ -202,7 +202,7 @@ gun.get('#messages').map().on(data=> {
 ### Immutable links to mutable user content with data from variable
 ###### Content-addressed post
 
-##### Storing data
+##### Creating (storing) the post
 ```javascript
 function onSubmit{
 // Logged in user stores a post in his signed graph. Notice, it should be an object in order to have a soul
@@ -215,7 +215,7 @@ gun.user(user.is).get('post1').put(data).on(async data => { //store message in U
 })}
 ```
 
-##### Fetching data
+##### Fetching the post
 ```javascript
 // Others can read the post later with the soul
 gun.get('#post1').map().on()
@@ -225,7 +225,7 @@ gun.get('#post1').map().on()
 ### Immutable links to mutable user content with [SEA.certify](https://gun.eco/docs/SEA.certify)
 ###### Content-addressed post, other users can react to our post (user.is and user(123) are the same in example)
 
-##### Storing data
+##### Creating (storing) the post
 ```javascript
 function onSubmit{
 // Logged in user(123) stores a post in his signed graph. Notice, it should be an object in order to have a soul
@@ -239,7 +239,7 @@ gun.user(user.is).get('post1').put(data).on(async data => { //store message in U
 })}
 ```
 
-##### Fetching data
+##### Fetching the post
 ```javascript
 // Others can read the post later with the soul
 gun.get('#post1').map().on()
@@ -248,8 +248,10 @@ gun.get('#post1').map().on()
 ##### Now we have a content-addressed post and users will store their interest or participation in the user space of the post issuer/publisher. (user(123))
 
 ```javascript
+function onSubmit{
 gun.user(123)
-.get(interestedpost1).put({pubkey: {user.is}, interested: true/false}, {opt: {cert: certificate}})
+.get(interestedpost1).put({pubkey: {user.is}, interested: true/false}, {opt: {cert: certificate}}) //user.is = other user interested in user(123)'s post
+}
 ```
 <br>
 
