@@ -223,7 +223,7 @@ gun.get('#posts').map().on()
 <br>
 
 ### Immutable links to mutable user content with [SEA.certify](https://gun.eco/docs/SEA.certify)
-###### Content-addressed post, editable by user, other users can react to our post (user.is and user(123) are the same in example)
+###### Content-addressed post, editable by user, other users can react to our post
 
 ##### Creating (storing) the post
 ```javascript
@@ -231,6 +231,7 @@ function onSubmit{
 // Logged in user(123) stores a post in his signed graph. Notice, it should be an object in order to have a soul
 let data = {name: 'Alex', city: 'New York', description: 'blabla', zoomLink: 'https://zoom.us/5sdf4w', long: '50.00', lat: '14.0'}
 
+// user.is and user(123) are the same
 gun.user(user.is).get('posts').put(data).on(async data => { //store message in User Space of user(123) then...
     let soul = data._["#"] // gets us the Soul of the just stored node
     let hash = await SEA.work(soul, null, null,{name:'SHA-256'}) // gets us the hash of the above data
