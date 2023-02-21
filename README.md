@@ -200,7 +200,7 @@ gun.get('#messages').map().on(data=> {
 <br>
 
 ### Immutable links to mutable user content with data from variable
-###### Content-addressed post
+###### Content-addressed post, editable by user
 
 ##### Creating (storing) the post
 ```javascript
@@ -208,22 +208,22 @@ function onSubmit{
 // Logged in user stores a post in his signed graph. Notice, it should be an object in order to have a soul
 let data = {name: 'Alex', city: 'New York', description: 'blabla', zoomLink: 'https://zoom.us/5sdf4w', long: '50.00', lat: '14.0'}
 
-gun.user(user.is).get('post1').put(data).on(async data => { //store message in User Space then...
+gun.user(user.is).get('posts').put(data).on(async data => { //store message in User Space then...
     let soul = data._["#"] // gets us the Soul of the just stored node
     let hash = await SEA.work(soul, null, null,{name:'SHA-256'}) // gets us the hash of the above data
-    gun.get('#post1').get(hash).put(soul)  // User puts a hashed soul of post1 in a public content-addressed node
+    gun.get('#posts').get(hash).put(soul)  // User puts a hashed soul of post1 in a public content-addressed node
 })}
 ```
 
-##### Fetching the post
+##### Fetching the posts
 ```javascript
-// Others can read the post later with the soul
-gun.get('#post1').map().on()
+// Others can read the posts later with the soul
+gun.get('#posts').map().on()
 ```
 <br>
 
 ### Immutable links to mutable user content with [SEA.certify](https://gun.eco/docs/SEA.certify)
-###### Content-addressed post, other users can react to our post (user.is and user(123) are the same in example)
+###### Content-addressed post, editable by user, other users can react to our post (user.is and user(123) are the same in example)
 
 ##### Creating (storing) the post
 ```javascript
@@ -231,18 +231,18 @@ function onSubmit{
 // Logged in user(123) stores a post in his signed graph. Notice, it should be an object in order to have a soul
 let data = {name: 'Alex', city: 'New York', description: 'blabla', zoomLink: 'https://zoom.us/5sdf4w', long: '50.00', lat: '14.0'}
 
-gun.user(user.is).get('post1').put(data).on(async data => { //store message in User Space of user(123) then...
+gun.user(user.is).get('posts').put(data).on(async data => { //store message in User Space of user(123) then...
     let soul = data._["#"] // gets us the Soul of the just stored node
     let hash = await SEA.work(soul, null, null,{name:'SHA-256'}) // gets us the hash of the above data
     let certificate = await SEA.certify("*", {"*": "interestedpost1", "+": "*"}, user._.sea); // let users write into User Space of the post issuer. (user.is/user(123))
-    gun.get('#post1').get(hash).put(soul, {opt: {cert: certificate}})  // User puts a hashed soul of post1 in a public content-addressed node
+    gun.get('#posts').get(hash).put(soul, {opt: {cert: certificate}})  // User puts a hashed soul of post1 in a public content-addressed node
 })}
 ```
 
-##### Fetching the post
+##### Fetching the posts
 ```javascript
-// Others can read the post later with the soul
-gun.get('#post1').map().on()
+// Others can read the posts later with the soul
+gun.get('#posts').map().on()
 ```
 
 ##### Now we have a content-addressed post and users will store their interest or participation in the user space of the post issuer/publisher. (user(123))
