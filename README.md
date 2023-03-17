@@ -16,6 +16,7 @@
 ### Need a hand? Artificial Intelligence Pair Programming
 ##### I work with ChatGPT for hours every day.
 ##### He writes me prototypes and POCs, and i just modify them myself.
+##### In addition, ChatGPT is an excellent tool for crafting well-formulated questions to present to a community of developers. (To get the most out of ChatGPT's language assistance, simply start by saying "improve my text" and provide your initial question or statement. ChatGPT will then generate a response, which you can copy and paste back into the prompt. This process will allow you to refine your original question or statement and make any necessary corrections to ensure that your meaning is clear. By repeating this step, you can achieve a perfectly formulated question or statement that accurately conveys your intended message.)
 ##### It makes everything soo much easier. It's perfect for checking ideas right away. [See for yourself](https://www.youtube.com/watch?v=ng438SIXyW4&t=100s)
 <br>
 
