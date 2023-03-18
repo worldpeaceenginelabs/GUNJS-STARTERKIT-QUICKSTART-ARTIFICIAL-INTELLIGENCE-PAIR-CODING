@@ -21,10 +21,9 @@
 <br>
 
 **Browser:** https://openai.com/blog/chatgpt/ <br>
-**Desktop App (Win, Mac, Linux)** https://github.com/lencx/ChatGPT (installables at releases) <br>
+**Desktop App (Win, Mac, Linux)** https://github.com/lencx/ChatGPT (installables on releases page) <br>
+**NEW! Supertools** https://supertools.therundown.ai All available AI Tools on one page (with filter options)
 <br>
-
-### NEW! [Supertools](https://supertools.therundown.ai/) All available AI Tools on one page (with filter options)
 
 # What is GunJS?
 ## GunJS GunDB Gun
