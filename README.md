@@ -24,6 +24,8 @@
 **Desktop App (Win, Mac, Linux)** https://github.com/lencx/ChatGPT (installables at releases) <br>
 <br>
 
+### NEW! [Supertools](https://supertools.therundown.ai/) All available AI Tools on one page (with filter options)
+
 # What is GunJS?
 ## GunJS GunDB Gun
 
